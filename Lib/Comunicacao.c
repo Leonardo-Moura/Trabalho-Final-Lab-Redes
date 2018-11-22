@@ -1,5 +1,10 @@
+/*
+    Autor: Leonardo Oliveira de Moura
 
-void EnviaString(char buff[], int socket, sockaddr_in addr);
+    Funcoes para comunicao usando socket com protocolo UDP
+*/
+
+void EnviaString(char buff[], int socket, sockaddr_in addr)
 (
 	int tam, ind, cont;
 	char msg[TAM_BUFF];
@@ -46,9 +51,9 @@ void EnviaString(char buff[], int socket, sockaddr_in addr);
 
 char* RecebeString(int socket, sockaddr_in addr)
 {
-    strInfo buff, recebido[2000/TAM_BUFF], ordenado[2000/TAM_BUFF];
+    strInfo buff, recebido[TAM_MAXIMO_MENSAGEM/TAM_BUFF], ordenado[TAM_MAXIMO_MENSAGEM/TAM_BUFF];
     int ind, bytes, cont, loop;
-    char retorno[2000];
+    char retorno[TAM_MAXIMO_MENSAGEM];
 
     ind = 0;
 
@@ -76,7 +81,7 @@ char* RecebeString(int socket, sockaddr_in addr)
         }
     }
 
-    memset(retorno, 0, 2000);
+    memset(retorno, 0, TAM_MAXIMO_MENSAGEM);
     loop = 0;
     for(loop = 0; loop <= cont; loop++)
         strcat(retorno, ordenado[loop]);

@@ -1,40 +1,37 @@
+/*
+    Autor: Leonardo Oliveira de Moura
+
+    Funcoes para manipulacoes de arquivos
+*/
+
 #include <dirent.h>
 
-anamnese le_arquivo(char id[])
+char* le_arquivo_txt(char nomeComExtensao[])
 {
-	int descritor;
-	char dados[2000];
-	char nome_arquivo[100] = "";
-	anamnese retorno;
+    int descritor;
+    char dados[TAM_MAXIMO_MENSAGEM];
+    char caminhoCompletoTxt[500] = "";
 
-	strcpy(nome_arquivo, get_current_dir_name());
-	strcat(nome_arquivo, "/");
-	strcat(nome_arquivo, id);
-	strcat(nome_arquivo, ".anm");
+    //Monta o caminho para abrir o arquivo na pasta do executável
+    strcpy(caminhoCompletoTxt, get_current_dir_name);
+    strcat(caminhoCompletoTxt, "/");
+    strcat(caminhoCompletoTxt, nomeComExtensao);
 
-	descritor = open(nome_arquivo, O_RDONLY);
+    //Abre o arquivo para leitura
+    descritor = open(caminhoCompletoTxt, O_RDONLY);
 
-	if (descritor < 0)
-	{
-		//Retorna vazio se não conseguiu abrir o arquivo
-		strcpy(retorno.cpf, "");
-		close(descritor);
-		return(retorno);
-	}
-	else
-	{
-		if (read(descritor, &retorno, sizeof(anamnese)) < 0)
-        	{
-			strcpy(retorno.cpf, "");
-            		close(descritor);
-		            return(retorno);
-        	}
-        	else
-        	{
-            		close(descritor);
-            		return(retorno);
-        	}
-	}
+    //Le o conteudo do arquivo
+    if (read(descritor, &retorno, sizeof(anamnese)) < 0)
+    {
+        printf("\n\n------------    Erro    --------");
+        printf("\n\tErro ao ler arquivo %s", caminhoCompletoTxt);
+        exit (0);
+    }
+    else
+    {
+        close(descritor);
+        return(retorno);
+    }
 }
 
 int escreve_arquivo(anamnese dados)
@@ -78,7 +75,7 @@ string Lista_Arquivos()
 {
 	DIR *dir;
 	struct dirent *lsdir;
-	char retorno[2000];
+	char retorno[TAM_MAXIMO_MENSAGEM];
 
 	dir = opendir(get_current_dir_name());
 
