@@ -7,7 +7,8 @@
 
             Aluno: Leonardo Oliveira de Moura
 
-Servidor em C preparado para aceitar ate 5 conexoes socket.
+Servidor em C preparado para aceitar ate 5 conexoes socket
+e realizar comunicação sobre protocolo UDP.
 Após a conexao:
 1 - Envia uma lista com os arquivos contidos na pasta do executável.
 2 - Recebe o nome do arquivo desejado pelo cliente
@@ -138,7 +139,6 @@ Funcao thread_server:
 void thread_server(conexao conn)
 {
 	info buff;
-	int n;
 	char strBuff[TAM_MAXIMO_MENSAGEM];
 
 	strBuff = Lista_Arquivos();

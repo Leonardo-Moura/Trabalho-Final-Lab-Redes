@@ -49,7 +49,7 @@ void EnviaString(char buff[], int socket, sockaddr_in addr)
 	}
 )
 
-char* RecebeString(int socket, sockaddr_in addr)
+char *RecebeString(int socket, sockaddr_in addr)
 {
     strInfo buff, recebido[TAM_MAXIMO_MENSAGEM/TAM_BUFF], ordenado[TAM_MAXIMO_MENSAGEM/TAM_BUFF];
     int ind, bytes, cont, loop;
