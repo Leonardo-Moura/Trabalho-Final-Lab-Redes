@@ -118,7 +118,7 @@ char *RecebeString(int socket, struct sockaddr_in *addr)
 		}
 		ind++;
 	}
-	printf("\nFrames ordenados com sucesso");
+	printf("Frames ordenados com sucesso\n");
 
 	memset(retorno, 0, TAM_MAXIMO_MENSAGEM);
 	loop = 0;
