@@ -1,0 +1,1 @@
+/usr/bin/cc   -rdynamic CMakeFiles/client.dir/Arquivos_Client/Client.c.o  -o bin/client Lib/libLib.a 

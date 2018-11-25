@@ -1,0 +1,2 @@
+/usr/bin/ar qc libLib.a  CMakeFiles/Lib.dir/Comunicacao.c.o CMakeFiles/Lib.dir/Manipulacao_de_Arquivos.c.o
+/usr/bin/ranlib libLib.a
