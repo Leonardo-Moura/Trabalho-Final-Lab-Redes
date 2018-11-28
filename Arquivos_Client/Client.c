@@ -48,7 +48,7 @@ main (int argc, char *argv[])
 		printf("cliente: erro na criacao do socket\n");
 		exit(0);
 	}
-	
+
 	printf("IP: %s\nPorta: %s\n", argv[1], argv[2]);
 	//Se conecta ao servidor
 	if (connect(socketfd,(struct sockaddr *)&serv_addr, sizeof(serv_addr)) < 0)
@@ -72,16 +72,18 @@ main (int argc, char *argv[])
 clientUDP (int socket)
 {
 	char strBuff[TAM_MAXIMO_MENSAGEM];
+	char nomeArquivo[TAM_MAXIMO_MENSAGEM];
 
 	//Envia uma solicitacao com um codigo informando que e uma nova conexao
 	strcpy(strBuff, itoa(NOVA_CONEXAO));
 	EnviaString(strBuff, socket, serv_addr);
 	printf("Cliente Enviou requisicao de conexao\n");
 
+	memset(strBuff, 0, TAM_MAXIMO_MENSAGEM);
 	//Apos a conexao, recebe a lista de arquivos do servidor
 	strcpy(strBuff, RecebeString(socket, &serv_addr));
 	printf("Recebeu a lista de Arquivos no servidor\n");
-	scanf("%s", strBuff);
+	scanf("%s", nomeArquivo);
 
 	//Implemetar envio de Dados para interface grafica
 	//EnviaDadosParaGUI(strBuff);
@@ -89,14 +91,19 @@ clientUDP (int socket)
 	//Implementar requisicao de Dados da Interface Grafica
 	//strBuff = ?;
 
+	memset(strBuff, 0, TAM_MAXIMO_MENSAGEM);
 	//Envia o nome do arquivo selecionado
+	strcpy(strBuff, nomeArquivo);
 	EnviaString(strBuff, socket, serv_addr);
 	printf("Enviou o nome do arquivo\n");
 
+	memset(strBuff, 0, TAM_MAXIMO_MENSAGEM);
 	//Recebe os dados do arquivo selecionado
 	strcpy(strBuff, RecebeString(socket, &serv_addr));
+	system("clear");
 	printf("Recebeu os dados do arquivo\n");
 	printf("\n%s\n", strBuff);
+	//Grava_Arquivo(strBuff, nomeArquivo);
 
 	//Implementar envio de Dados para interface Grafica
 	//ExibeDados(strBuff);

@@ -2,7 +2,7 @@
     Autor: Leonardo Oliveira de Moura
 */
 #define TAM_BUFF 50
-#define TAM_MAXIMO_MENSAGEM 20000
+#define TAM_MAXIMO_MENSAGEM 1000000
 #define NOVA_CONEXAO 1
 #define FIM 100000
 

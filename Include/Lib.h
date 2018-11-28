@@ -19,5 +19,6 @@ void EnviaString(char* , int, struct sockaddr_in);
 char* RecebeString(int, struct sockaddr_in*);
 char* le_arquivo_txt(char*);
 char* Lista_Arquivos();
+void Grava_Arquivo(char*, char*);
 
 #endif

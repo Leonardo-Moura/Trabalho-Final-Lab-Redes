@@ -106,7 +106,6 @@ char *RecebeString(int socket, struct sockaddr_in *addr)
 	printf("Total de frames: %d\n", cont);
 	while(ind < cont)
 	{
-		printf("Buscando frame da posicao: %d\n", ind);
 		memset(ordenado[ind].msg, 0, TAM_BUFF);
 		for(loop = 0; loop < cont; loop++)
 		{
@@ -127,6 +126,6 @@ char *RecebeString(int socket, struct sockaddr_in *addr)
 		printf("Adicionando ao retorno: %s\n", ordenado[loop].msg);
 		strcat(retorno, ordenado[loop].msg);
 	}
-	printf("\nResultado final do dados recebidos: %s\n", retorno);
+	//printf("\nResultado final do dados recebidos: %s\n", retorno);
 	return(retorno);
 }

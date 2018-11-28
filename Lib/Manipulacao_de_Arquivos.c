@@ -69,3 +69,36 @@ char* Lista_Arquivos()
 	closedir(dir);
 	return retorno;
 }
+
+void Grava_Arquivo(char *dados, char *nome)
+{
+	int descritor, n;
+	char *nomeCompleto = malloc(500 * sizeof(char));
+
+	getwd(nomeCompleto);
+	strcat(nomeCompleto, "/");
+	strcat(nomeCompleto, nome);
+
+	printf("\nDados que serão escritos: %s\n", dados);
+	printf("Quantidade de caracteres: %d\n", strlen(dados));
+
+	descritor = open(nomeCompleto, O_WRONLY|O_CREAT, 0744);
+
+	if (descritor > 0)
+	{
+		n = write(descritor, dados, strlen(dados));
+		if (n < 0)
+		{
+			close(descritor);
+			printf("\n------------	Erro	-------");
+			printf("\nErro ao gravar arquivo\n");
+			exit (-1);
+		}
+		close(descritor);
+	}
+	else
+	{
+			printf("\n------------	Erro	-------");
+			printf("\nErro ao abrir arquivo para gravacao\n");
+	}
+}
