@@ -83,6 +83,9 @@ clientUDP (int socket)
 	//Apos a conexao, recebe a lista de arquivos do servidor
 	strcpy(strBuff, RecebeString(socket, &serv_addr));
 	printf("Recebeu a lista de Arquivos no servidor\n");
+	printf("------------------\tArquivos do Servidor\t---------------\n");
+	printf("%s\n", strBuff);
+	printf("Digite o nome do arquivo:");
 	scanf("%s", nomeArquivo);
 
 	//Implemetar envio de Dados para interface grafica
@@ -95,13 +98,14 @@ clientUDP (int socket)
 	//Envia o nome do arquivo selecionado
 	strcpy(strBuff, nomeArquivo);
 	EnviaString(strBuff, socket, serv_addr);
-	printf("Enviou o nome do arquivo\n");
+	printf("\nEnviou o nome do arquivo\n");
 
 	memset(strBuff, 0, TAM_MAXIMO_MENSAGEM);
 	//Recebe os dados do arquivo selecionado
 	strcpy(strBuff, RecebeString(socket, &serv_addr));
-	system("clear");
+	//system("clear");
 	printf("Recebeu os dados do arquivo\n");
+	printf("\n\n\n\n--------------\tConteudo do arquivo:\t----------\n");
 	printf("\n%s\n", strBuff);
 	//Grava_Arquivo(strBuff, nomeArquivo);
 

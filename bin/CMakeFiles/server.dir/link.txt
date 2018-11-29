@@ -1,1 +1,0 @@
-/usr/bin/cc   -rdynamic CMakeFiles/server.dir/Arquivos_Server/Server.c.o  -o bin/server -pthread Lib/libLib.a 
