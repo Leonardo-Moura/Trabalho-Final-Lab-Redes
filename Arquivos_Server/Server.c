@@ -8,7 +8,7 @@
             Aluno: Leonardo Oliveira de Moura
             Aluno: Tassiano Cardoso
 
-Servidor em C preparado para aceitar ate 5 conexoes socket
+Servidor em C preparado para aceitar conexoes socket
 e realizar comunicação sobre protocolo UDP.
 Após a conexao:
 1 - Envia uma lista com os arquivos contidos na pasta do executável.
